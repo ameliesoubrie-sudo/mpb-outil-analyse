@@ -42,7 +42,7 @@ Créer `bilan.monphotographebebe.fr` (A/AAAA vers le serveur du Pro), puis le ce
 ### Étape 2 : secrets
 1. Générer le secret client sur une machine autorisée : `openssl rand -hex 32`. L'installer côté Pro (`MPB_REMOTE_CLIENT_SECRET`) et côté outil (`MPB_CLIENT_SECRET`), nulle part ailleurs.
 2. Générer une clé de chiffrement distincte : `openssl rand -hex 32` → `SESSION_ENCRYPTION_KEY`.
-3. Récupérer la chaîne de connexion Postgres (Supabase > Project Settings > Database, « Session pooler », `sslmode=require`) → `SESSION_STORE_URL`, et le certificat racine Supabase → `/etc/mpb/supabase-ca.crt`.
+3. Récupérer la chaîne de connexion Postgres (Supabase > Project Settings > Database, « Session pooler », `sslmode=require`) → `SESSION_STORE_URL`, et le certificat racine Supabase → `/etc/mpb/supabase-ca.crt` (le fichier est déjà dans le dépôt : `espace/deploy/supabase-ca.crt`, certificat public, valable jusqu'en avril 2031).
 4. Créer `/etc/mpb/outil-analyse.env` à partir de `.env.example` (root, droits 600).
 
 ### Étape 3 : serveur de l'outil
