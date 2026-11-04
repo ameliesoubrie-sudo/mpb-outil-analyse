@@ -1,0 +1,15 @@
+{
+  "name": "mpb-espace-visibilite-serveur",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Serveur de l'outil d'analyse Mon Photographe Bébé (bilan.monphotographebebe.fr) : connexion par le compte Pro, sessions, routes métier.",
+  "type": "module",
+  "engines": { "node": ">=22.12" },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test --test-concurrency=1 test/*.test.js"
+  },
+  "dependencies": {
+    "pg": "8.13.1"
+  }
+}

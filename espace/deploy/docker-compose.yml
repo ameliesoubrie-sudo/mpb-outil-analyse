@@ -1,0 +1,13 @@
+# Deux instances derrière le Nginx du serveur Pro. Les sessions sont partagées dans Postgres (schéma mpb_prive).
+services:
+  outil:
+    image: mpb-outil-analyse:latest
+    build: { context: .., dockerfile: deploy/Dockerfile }
+    env_file: /etc/mpb/outil-analyse.env      # hors du dépôt, droits 600 (voir .env.example)
+    restart: unless-stopped
+    ports: ["127.0.0.1:8081:8080"]
+    volumes: ["/etc/mpb/supabase-ca.crt:/etc/mpb/supabase-ca.crt:ro"]
+    deploy: { replicas: 1 }
+    read_only: true
+    security_opt: ["no-new-privileges:true"]
+    logging: { driver: json-file, options: { max-size: "10m", max-file: "5" } }

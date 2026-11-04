@@ -1,0 +1,38 @@
+# Edge Functions de l'outil d'analyse.
+# Les 10 fonctions membre reçoivent un jeton opaque MPB (non JWT) transmis par le serveur de l'outil :
+# la passerelle Supabase ne vérifie donc pas de JWT (verify_jwt = false) et chaque fonction appelle
+# authentifierMembre() (mpb_auth.ts) en toute première instruction. Aucune autre fonction n'est dans ce cas.
+
+[functions.analyse-site]
+verify_jwt = false
+
+[functions.generer-plan]
+verify_jwt = false
+
+[functions.agent-identite]
+verify_jwt = false
+
+[functions.studio-instagram]
+verify_jwt = false
+
+[functions.redacteur-pages]
+verify_jwt = false
+
+[functions.messages-clients]
+verify_jwt = false
+
+[functions.stratege-marque]
+verify_jwt = false
+
+[functions.assistant-partenaires]
+verify_jwt = false
+
+[functions.studio-contenu]
+verify_jwt = false
+
+[functions.calculateur]
+verify_jwt = false
+
+# Outil administratif retiré (répond 410). Garde la vérification JWT de la passerelle.
+[functions.ranger-ressources]
+verify_jwt = true
